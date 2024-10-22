@@ -56,6 +56,9 @@
                             <button type="submit" class="btn btn-primary btn-block">Sign In</button>
                         </div>
                         <!-- /.col -->
+                        <br><br><br>
+                        <p>Dont have an account? <a href="{{ url('/register') }}">Register</a></p>
+
                     </div>
                 </form>
             </div>

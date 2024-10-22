@@ -8,6 +8,8 @@ use App\Http\Controllers\SalesController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PosController;
+
 
 
 use Monolog\Level;
@@ -59,6 +61,10 @@ Route::get('/user/hapus/{id}', [UserController::class, 'hapus']);
 //Jobsheet 7 
 
 Route::pattern('id', '[0-9]+'); //artinya ketika ada parameter{id}, maka harus berupa angka
+
+
+Route::get('register', [AuthController::class, 'register']);
+Route::post('register', [AuthController::class, 'postRegister']);
 
 Route::get('login', [AuthController::class, 'login'])->name('login');
 Route::post('login', [AuthController::class, 'postlogin']);
