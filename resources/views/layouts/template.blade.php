@@ -9,6 +9,8 @@
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
+  
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome-free/css/all.min.css') }}">
   <!-- Ionicons -->
@@ -38,6 +40,41 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css') }}">
 
+  <style>
+    .main-sidebar {
+    background-color: #07889B; /* Warna TEAL sebagai latar belakang utama sidebar */
+    color: #ffffff; /* Warna teks putih agar kontras */
+}
+
+.main-sidebar .brand-link {
+    background-color: #E37222; /* Warna TANGERINE untuk brand header */
+    color: #ffffff; /* Warna teks putih agar kontras */
+    border-bottom: 1px solid #EAAA7B; /* Garis bawah brand dengan warna TAN */
+}
+
+.main-sidebar .brand-link .brand-image {
+    opacity: 1; /* Menjadikan logo lebih jelas */
+}
+
+.main-sidebar .brand-link:hover {
+    background-color: #EAAA7B; /* Warna TAN untuk efek hover pada brand link */
+}
+
+.brand-text {
+    font-family: 'Poppins', sans-serif; /* Menggunakan font Poppins yang modern dan estetik */
+    font-weight: 700; /* Membuat teks lebih tebal agar menonjol */
+    font-size: 20px; /* Ukuran font yang sedikit lebih besar */
+    color: #ffffff; /* Warna teks putih untuk kontras */
+    letter-spacing: 1px; /* Spasi antar huruf untuk tampilan elegan */
+    text-transform: uppercase; /* Mengubah teks menjadi huruf kapital agar lebih formal */
+}
+
+
+.elevation-4 {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Memberikan bayangan lembut */
+}
+
+  </style>
   @stack('css') <!-- Digunakan untuk memanggil custom css dari perintah push('css') pada masing-masing view -->
 </head>
 <body class="hold-transition sidebar-mini">
@@ -51,8 +88,11 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{  url('/') }}" class="brand-link">
-      <img src="{{ asset ('adminlte/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">PWL - Starter Code</span>
+
+      <img src="{{ asset('logo.jpg') }}"  alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+
+      {{-- <img src="{{ asset ('adminlte/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> --}}
+      <span class="brand-text font-weight-light">Happy Market</span>
     </a>
 
     <!-- Sidebar -->

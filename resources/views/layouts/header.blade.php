@@ -12,6 +12,55 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css') }}">
 </head> --}}
+<style>
+  .main-header.navbar {
+    background-color: #07889B; /* Warna TEAL untuk latar belakang header */
+    color: #ffffff; /* Warna teks putih untuk kontras */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Bayangan halus untuk memberikan sedikit kedalaman */
+}
+
+.main-header .navbar-nav .nav-link {
+    color: #ffffff; /* Warna putih untuk teks dan ikon */
+    font-weight: 500; /* Sedikit lebih tebal */
+    transition: color 0.3s ease-in-out; /* Transisi halus saat di-hover */
+}
+
+.main-header .navbar-nav .nav-link:hover {
+    color: #66B9BF; /* Warna POWDER untuk hover pada link dan ikon */
+}
+
+.navbar-search-block .form-control-navbar {
+    background-color: #ffffff; /* Warna putih untuk kotak pencarian */
+    border: none;
+    color: #333333; /* Warna teks gelap agar mudah dibaca */
+    border-radius: 4px; /* Sedikit sudut membulat */
+}
+
+.navbar-search-block .btn-navbar {
+    background-color: #E37222; /* Warna TANGERINE untuk tombol pencarian */
+    color: #ffffff;
+    border: none;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.navbar-search-block .btn-navbar:hover {
+    background-color: #EAAA7B; /* Warna TAN saat tombol pencarian di-hover */
+}
+
+.navbar-search-block .btn-navbar[data-widget="navbar-search"] {
+    background-color: transparent; /* Tombol close (x) tetap transparan */
+    color: #ffffff;
+}
+
+.main-header .fas {
+    transition: color 0.3s ease-in-out; /* Transisi untuk ikon saat hover */
+}
+
+.main-header .fas:hover {
+    color: #66B9BF; /* Warna POWDER untuk ikon saat di-hover */
+}
+
+</style>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
 <div class="wrapper">
@@ -23,11 +72,11 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="../../index3.html" class="nav-link">Home</a>
+        <a href="{{ url('/dashboard') }}" class="nav-link">Home</a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
+      {{-- <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
-      </li>
+      </li> --}}
     </ul>
 
     <!-- Right navbar links -->
@@ -51,92 +100,6 @@
               </div>
             </div>
           </form>
-        </div>
-      </li>
-
-      <!-- Messages Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-comments"></i>
-          <span class="badge badge-danger navbar-badge">3</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Brad Diesel
-                  <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">Call me whenever you can...</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  John Pierce
-                  <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">I got your message bro</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="../../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Nora Silvester
-                  <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">The subject goes here</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-        </div>
-      </li>
-      <!-- Notifications Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-bell"></i>
-          <span class="badge badge-warning navbar-badge">15</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">15 Notifications</span>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-envelope mr-2"></i> 4 new messages
-            <span class="float-right text-muted text-sm">3 mins</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-users mr-2"></i> 8 friend requests
-            <span class="float-right text-muted text-sm">12 hours</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-file mr-2"></i> 3 new reports
-            <span class="float-right text-muted text-sm">2 days</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
         </div>
       </li>
       <li class="nav-item">
