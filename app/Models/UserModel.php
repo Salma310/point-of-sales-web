@@ -44,11 +44,16 @@ class UserModel extends Authenticatable
      * @var array
      */
 
-    protected $fillable = [ 'username', 'password', 'nama', 'level_id', 'created_at', 'updated_at'];
+    protected $fillable = [ 'username', 'password', 'nama', 'level_id', 'avatar', 'created_at', 'updated_at'];
 
     protected $hidden = ['password']; //jangan ditampilkan saat select
 
     protected $casts = ['password' => 'hashed']; //casting password agar otomatis di hash
+
+    public function profil(): HasOne
+    {
+        return $this->hasOne(ProfilUserModel::class, 'user_id', 'user_id');
+    }
 
     public function level(): BelongsTo
     {
@@ -77,5 +82,10 @@ class UserModel extends Authenticatable
     public function getRole()
     {
         return $this->level->level_kode;
+    }
+
+    public function getJenisKelamin()
+    {
+        return $this->profil ? $this->profil->jenis_kelamin : null;
     }
 }

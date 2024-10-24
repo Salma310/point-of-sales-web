@@ -1,0 +1,35 @@
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+.dropdown-header {
+    padding: 10px;
+    text-align: center;
+}
+.profile-image {
+    width: 20px; /* Ukuran gambar profil kecil */
+    height: 20px; /* Tinggi gambar profil kecil */
+    border-radius: 50%; /* Membuat gambar berbentuk bulat */
+    margin-top: 10px;
+}
+.profile-image-large {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
