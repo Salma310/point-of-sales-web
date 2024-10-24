@@ -40,7 +40,7 @@ class StokController extends Controller
             ->addColumn('aksi', function ($stok) {
                 // $btn = '<button onclick="modalAction(\''.url('/stok/' . $stok->stok_id . '/show_ajax').'\')" class="btn btn-info btn-sm">Detail</button> ';
                 $btn = '<button onclick="modalAction(\''.url('/stok/' . $stok->stok_id . '/edit_stok').'\')" class="btn btn-info btn-sm">Update</button> ';
-                $btn .= '<button onclick="modalAction(\''.url('/stok/' . $stok->stok_id . '/delete_ajax').'\')" class="btn btn-danger btn-sm">Hapus</button> ';
+                // $btn .= '<button onclick="modalAction(\''.url('/stok/' . $stok->stok_id . '/delete_ajax').'\')" class="btn btn-danger btn-sm">Hapus</button> ';
                 return $btn;
             })
             ->rawColumns(['aksi'])
@@ -87,7 +87,7 @@ class StokController extends Controller
                 'message' => 'Data berhasil disimpan'
             ]);
         }
-        return redirect('/');
+        return redirect('/stok');
     }
 
     public function edit_stok($id)
@@ -171,7 +171,7 @@ class StokController extends Controller
                 'message' => 'Data berhasil diupdate'
             ]);
         }
-        return redirect('/');
+        return redirect('/stok');
     }
 
     public function confirm_ajax($id)
@@ -198,7 +198,7 @@ class StokController extends Controller
                 ]);
             }
         }
-        return redirect('/');
+        return redirect('/stok');
     }
 
 }

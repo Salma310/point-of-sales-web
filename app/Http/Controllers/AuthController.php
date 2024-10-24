@@ -17,7 +17,7 @@ class AuthController extends Controller
     public function login()
     {
         if (Auth::check()) { // Jika sudah login, maka redirect ke halaman home
-            return redirect('/');
+            return redirect('/dashboard');
         }
         
         return view('auth.login');
@@ -32,7 +32,7 @@ class AuthController extends Controller
                 return response()->json([
                     'status' => true,
                     'message' => 'Login Berhasil',
-                    'redirect' => url('/')
+                    'redirect' => url('/dashboard')
                 ]);
             }
 
@@ -60,6 +60,7 @@ class AuthController extends Controller
         $level = LevelModel::select('level_id', 'level_nama')->get();
         return view('auth.register')->with('level', $level);
     }
+
     public function postRegister(Request $request)
     {
         if ($request->ajax() || $request->wantsJson()) {
