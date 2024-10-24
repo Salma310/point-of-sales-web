@@ -9,6 +9,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PosController;
+use App\Http\Controllers\StokController;
+use App\Http\Controllers\ProfileController;
 
 
 
@@ -62,6 +64,9 @@ Route::get('/user/hapus/{id}', [UserController::class, 'hapus']);
 
 Route::pattern('id', '[0-9]+'); //artinya ketika ada parameter{id}, maka harus berupa angka
 
+Route::get('/', function () {
+    return view('landing');  // menampilkan view 'landing.blade.php'
+});
 
 Route::get('register', [AuthController::class, 'register']);
 Route::post('register', [AuthController::class, 'postRegister']);
@@ -75,7 +80,12 @@ Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 Route::middleware(['auth'])->group(function(){ //artinya semua route di dalam group ini harus login dulu
 
     //masukkan semua route yang perlu autentikasi disni
-    Route::get('/', [WelcomeController::class, 'index']);
+    Route::get('/dashboard', [WelcomeController::class, 'index']);
+    Route::get('/profil', [ProfileController::class, 'index'])->name('profil.index');
+    Route::post('/profil/update', [ProfileController::class, 'update'])->name('profil.update');
+    Route::post('/profil/update-avatar', [ProfileController::class, 'updateAvatar'])->name('profil.updateAvatar');
+    Route::post('/profil/update_data_diri', [ProfileController::class, 'updateDataDiri'])->name('profil.updateDataDiri');
+    Route::post('/profil/update_password', [ProfileController::class, 'updatePassword'])->name('profil.updatePassword');
 
     //route level
     
@@ -133,9 +143,32 @@ Route::middleware(['auth'])->group(function(){ //artinya semua route di dalam gr
             Route::delete('/{id}/delete_ajax', [SupplierController::class, 'delete_ajax']); 
             Route::delete('/{id}', [SupplierController::class, 'destroy']); 
         });
+        Route::group(['prefix' => 'sales'], function(){
+            Route::get('/', [SalesController::class, 'index']);   
+            Route::get('/list', [SalesController::class, 'list'])->name('sales.list');
+            Route::get('/{id}/show_ajax', [SalesController::class, 'show_ajax'])->name('sales.show_ajax');
+            Route::get('/export_pdf', [SalesController::class, 'export_pdf'])->name('sales.export_pdf');       
+        });
     });
 
     Route::middleware(['authorize:ADM,MNG,STF'])->group(function(){
+        Route::group(['prefix' => 'stok'], function(){
+            Route::get('/', [StokController::class, 'index']);     
+            Route::post('/list', [StokController::class, 'list']);     
+            Route::get('/create_ajax', [StokController::class, 'create_ajax']); 
+            Route::post('/store_ajax', [StokController::class, 'store_ajax']);  
+            Route::get('/{id}/edit_stok', [StokController::class, 'edit_stok']); 
+            Route::put('/{id}/update_stok', [StokController::class, 'update_stok']);  
+            Route::get('/{id}/delete_ajax', [StokController::class, 'confirm_ajax']);  
+            Route::delete('/{id}/delete_ajax', [StokController::class, 'delete_ajax']); 
+        });  
+
+        Route::group(['prefix' => 'pos'], function(){
+            Route::get('/', [PosController::class, 'index'])->name('pos.index'); ; 
+            // Route::get('/search', [PosController::class, 'search'])->name('pos.search');
+            Route::get('/search-items', [PosController::class, 'searchItems'])->name('pos.search');
+        });  
+
         Route::group(['prefix' => 'kategori'], function(){
             Route::get('/', [KategoriController::class, 'index']);         
             Route::post('/list', [KategoriController::class, 'list']);      
