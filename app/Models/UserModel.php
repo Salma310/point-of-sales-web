@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -33,7 +34,7 @@ use Monolog\Level;
 // }
 
 
-class UserModel extends Authenticatable
+class UserModel extends Authenticatable implements JWTSubject
 {
     use HasFactory;
 
