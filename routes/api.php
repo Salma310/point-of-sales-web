@@ -23,12 +23,14 @@ use Monolog\Level;
 // });
 
 Route::post('/register', App\Http\Controllers\Api\RegisterController::class)->name('register');
+// Route::post('/register1', App\Http\Controllers\Api\RegisterController::class)->name('register1');
+
 Route::post('/login', App\Http\Controllers\Api\LoginController::class)->name('login');
 Route::get('/login', App\Http\Controllers\Api\LoginController::class)->name('login');
 // Route::middleware('auth:sanctum')->get('/user', [LoginController::class, 'getUser'])->name('user');
-// Route::middleware('auth:api')->get('/user', function (Request $request){
-//     return $request->user();
-// });
+Route::middleware('auth:api')->get('/user', function (Request $request){
+    return $request->user();
+});
 Route::post('/logout', App\Http\Controllers\Api\LogoutController::class)->name('logout');
 
 Route::get('levels', [LevelController::class, 'index']);
