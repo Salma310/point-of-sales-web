@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Foundation\Auth\User as Authenticatable; //implement class Authenticatable
 
 // use App\Models\LevelModel;
@@ -68,6 +69,13 @@ class UserModel extends Authenticatable implements JWTSubject
     {
         return $this->belongsTo(LevelModel::class, 'level_id', 'level_id');
     } 
+
+    public function avatar() : Attribute
+    {
+        return Attribute::make(
+            get: fn ($image) => url('/storage/app/public/avatars/' . $image),
+        );
+    }
 
     /**
      * Mendapatkan nama role
